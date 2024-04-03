@@ -9,16 +9,12 @@
 export interface Config {
   collections: {
     pages: Page;
-    categories: Category;
     media: Media;
     users: User;
     'payload-preferences': PayloadPreference;
     'payload-migrations': PayloadMigration;
   };
-  globals: {
-    navigations: Navigations;
-    site: Site;
-  };
+  globals: {};
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -26,32 +22,7 @@ export interface Config {
  */
 export interface Page {
   id: string;
-  category?: (string | null) | Category;
   title: string;
-  images?:
-    | {
-        image: string | Media;
-        id?: string | null;
-      }[]
-    | null;
-  sidebar?: {
-    content?: {
-      root: {
-        children: {
-          type: string;
-          version: number;
-          [k: string]: unknown;
-        }[];
-        direction: ('ltr' | 'rtl') | null;
-        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-        indent: number;
-        type: string;
-        version: number;
-      };
-      [k: string]: unknown;
-    } | null;
-  };
-  h1?: string | null;
   content?: {
     root: {
       children: {
@@ -67,22 +38,8 @@ export interface Page {
     };
     [k: string]: unknown;
   } | null;
-  content_html?: string | null;
   slug?: string | null;
-  url: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "categories".
- */
-export interface Category {
-  id: string;
-  title: string;
-  defaultPage: string | Page;
-  slug?: string | null;
-  url: string;
+  url?: string | null;
   updatedAt: string;
   createdAt: string;
 }
@@ -152,92 +109,6 @@ export interface PayloadMigration {
   batch?: number | null;
   updatedAt: string;
   createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "navigations".
- */
-export interface Navigations {
-  id: string;
-  main?:
-    | {
-        type?: ('internal' | 'external' | 'subnavigation') | null;
-        doc?: {
-          relationTo: 'pages';
-          value: string | Page;
-        } | null;
-        category?: {
-          relationTo: 'categories';
-          value: string | Category;
-        } | null;
-        url?: string | null;
-        label?: string | null;
-        newTab?: boolean | null;
-        subnavigation?:
-          | {
-              type?: ('internal' | 'external') | null;
-              doc?: {
-                relationTo: 'pages';
-                value: string | Page;
-              } | null;
-              category?: {
-                relationTo: 'categories';
-                value: string | Category;
-              } | null;
-              url?: string | null;
-              label?: string | null;
-              newTab?: boolean | null;
-              id?: string | null;
-            }[]
-          | null;
-        id?: string | null;
-      }[]
-    | null;
-  footer?:
-    | {
-        type?: ('internal' | 'external') | null;
-        doc?: {
-          relationTo: 'pages';
-          value: string | Page;
-        } | null;
-        category?: {
-          relationTo: 'categories';
-          value: string | Category;
-        } | null;
-        url?: string | null;
-        label?: string | null;
-        newTab?: boolean | null;
-        id?: string | null;
-      }[]
-    | null;
-  updatedAt?: string | null;
-  createdAt?: string | null;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "site".
- */
-export interface Site {
-  id: string;
-  logo: string | Media;
-  contact?: {
-    phone?: string | null;
-    email?: string | null;
-  };
-  meta?: {
-    title?: string | null;
-    description?: string | null;
-    image?: string | Media | null;
-    additionalMetaTags?:
-      | {
-          key: string;
-          value: string;
-          id?: string | null;
-        }[]
-      | null;
-  };
-  updatedAt?: string | null;
-  createdAt?: string | null;
 }
 
 

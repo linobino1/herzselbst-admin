@@ -1505,11 +1505,6 @@
   dependencies:
     range-parser "^1.2.1"
 
-"@payloadcms/plugin-seo@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@payloadcms/plugin-seo/-/plugin-seo-2.2.1.tgz#12b65af75d140403546b034c8738fc022c5ec0a5"
-  integrity sha512-EqC+98oAwH0qlqVM/X7/zvKKAvWuHAGj8zzcwNGJN/Q7tIh9NB5isKSxeIXI8e9QxuRzCnR2MVBi0Q/I0SKZTQ==
-
 "@payloadcms/richtext-lexical@^0.7.0":
   version "0.7.0"
   resolved "https://registry.yarnpkg.com/@payloadcms/richtext-lexical/-/richtext-lexical-0.7.0.tgz#b37c0c7a1ef27efaa7a17c6614b0f8053d7eb016"
@@ -2316,6 +2311,13 @@
     "@types/http-errors" "*"
     "@types/mime" "*"
     "@types/node" "*"
+
+"@types/source-map-support@^0.5.10":
+  version "0.5.10"
+  resolved "https://registry.yarnpkg.com/@types/source-map-support/-/source-map-support-0.5.10.tgz#824dcef989496bae98e9d04c8dc1ac1d70e1bd39"
+  integrity sha512-tgVP2H469x9zq34Z0m/fgPewGhg/MLClalNOiPIzQlXrSS2YrKu/xCdSCKnEDwkFha51VKEKB6A9wW26/ZNwzA==
+  dependencies:
+    source-map "^0.6.0"
 
 "@types/webidl-conversions@*":
   version "7.0.3"

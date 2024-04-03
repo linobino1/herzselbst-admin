@@ -28,7 +28,6 @@ export const addUrlField: Plugin = (incomingConfig: Config): Config => {
                 {
                   name: "url",
                   type: "text",
-                  required: true,
                   validate: () => true,
                   hooks: {
                     beforeChange: [
@@ -62,7 +61,7 @@ export const addUrlField: Plugin = (incomingConfig: Config): Config => {
                 enableRichTextLink: false,
                 enableRichTextRelationship: false,
               },
-            },
+            }
       ) || []),
     ],
   };

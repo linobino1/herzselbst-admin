@@ -5,12 +5,8 @@ import path from "path";
 import Users from "./collections/Users";
 import Media from "./collections/Media";
 import Pages from "./collections/Pages";
-import Categories from "./collections/Categories";
-import seoPlugin from "@payloadcms/plugin-seo";
 import { cloudStorage } from "@payloadcms/plugin-cloud-storage";
 import { s3Adapter } from "@payloadcms/plugin-cloud-storage/s3";
-import Navigations from "./globals/Navigations";
-import Site from "./globals/Site";
 import addSlugField from "./plugins/addSlugField";
 import addUrlField from "./plugins/addUrlField";
 import {
@@ -32,13 +28,10 @@ import Gallery from "./blocks/Gallery";
 import GoogleMaps from "./blocks/GoogleMaps";
 
 export default buildConfig({
+  // disable rate limiting
   rateLimit: {
-    window: 15 * 60 * 1000, // 15 minutes
-    max: process.env.NODE_ENV === "development" ? 9999999 : 1000, // limit each IP to 1000 requests per windowMs
-  },
-  localization: {
-    locales: ["de"],
-    defaultLocale: "de",
+    window: 5 * 60 * 1000, // 5 minutes
+    max: 1000000000,
   },
   admin: {
     user: Users.slug,
@@ -86,43 +79,13 @@ export default buildConfig({
     url: process.env.MONGODB_URI ?? false,
     migrationDir: path.resolve(__dirname, "migrations"),
   }),
-  collections: [Pages, Categories, Media, Users],
-  globals: [Navigations, Site],
+  collections: [Pages, Media, Users],
   typescript: {
-    outputFile: path.resolve(__dirname, "cms/payload-types.ts"),
+    outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
   plugins: [
     addSlugField,
     addUrlField,
-    seoPlugin({
-      globals: ["site"],
-      uploadsCollection: "media",
-      fields: [
-        {
-          name: "additionalMetaTags",
-          label: "Zusätzliche Meta-Tags",
-          labels: {
-            singular: "Meta-Tag",
-            plural: "Meta-Tags",
-          },
-          type: "array",
-          fields: [
-            {
-              name: "key",
-              label: "Key",
-              type: "text",
-              required: true,
-            },
-            {
-              name: "value",
-              label: "Value",
-              type: "text",
-              required: true,
-            },
-          ],
-        },
-      ],
-    }),
     cloudStorage({
       enabled: process.env.S3_ENABLED === "true",
       collections: {

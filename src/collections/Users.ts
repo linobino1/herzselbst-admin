@@ -3,15 +3,7 @@ import type { CollectionConfig } from "payload/types";
 
 const Users: CollectionConfig = {
   slug: "users",
-  labels: {
-    singular: "Benutzer",
-    plural: "Benutzer",
-  },
   auth: true,
-  admin: {
-    useAsTitle: "email",
-    group: "Einstellungen",
-  },
   access: {
     // Only allow creation of users to non-admins if no users exist
     create: async ({ req: { payload, user } }) =>

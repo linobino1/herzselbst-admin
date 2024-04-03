@@ -3,29 +3,13 @@ import { publicReadOnly } from "../access/publicReadOnly";
 
 export const Media: CollectionConfig = {
   slug: "media",
-  labels: {
-    singular: "Datei",
-    plural: "Dateien",
-  },
-  admin: {
-    group: "Inhalte",
-    pagination: {
-      defaultLimit: 50,
-    },
-  },
   access: publicReadOnly,
-  upload: {
-    staticDir: process.env.MEDIA_DIR || undefined,
-  },
+  upload: true,
   fields: [
     {
       name: "alt",
       label: "alt text",
       type: "text",
-      admin: {
-        description:
-          "Beschreibe, was das Bild zeigt. Feld leer lassen, um den Dateinamen als Alt-Text zu verwenden",
-      },
       hooks: {
         beforeValidate: [
           // use filename as alt text if alt text is empty
