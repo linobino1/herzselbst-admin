@@ -39,17 +39,6 @@ export const link = ({
           siblingData.type === "internal",
       },
     },
-    {
-      name: "category",
-      label: "Kategorie",
-      type: "relationship",
-      relationTo: ["categories"],
-      required: true,
-      admin: {
-        condition: (data: any, siblingData: any) =>
-          siblingData.type === "subnavigation",
-      },
-    },
     // external link
     {
       name: "label",
