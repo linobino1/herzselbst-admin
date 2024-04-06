@@ -62,7 +62,6 @@ export default buildConfig({
         ],
       }),
       HTMLConverterFeature({
-        // @ts-ignore
         converters: ({ defaultConverters }) => {
           return [
             HTMLConverterWithAlign,
