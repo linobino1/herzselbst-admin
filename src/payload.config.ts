@@ -5,8 +5,6 @@ import path from "path";
 import Users from "./collections/Users";
 import Media from "./collections/Media";
 import Pages from "./collections/Pages";
-import { cloudStorage } from "@payloadcms/plugin-cloud-storage";
-import { s3Adapter } from "@payloadcms/plugin-cloud-storage/s3";
 import addSlugField from "./plugins/addSlugField";
 import addUrlField from "./plugins/addUrlField";
 import {
@@ -83,30 +81,5 @@ export default buildConfig({
   typescript: {
     outputFile: path.resolve(__dirname, "payload-types.ts"),
   },
-  plugins: [
-    addSlugField,
-    addUrlField,
-    cloudStorage({
-      enabled: process.env.S3_ENABLED === "true",
-      collections: {
-        media: {
-          disablePayloadAccessControl: true, // serve files directly from S3
-          generateFileURL: (file) => {
-            return `${process.env.MEDIA_URL}/${file.filename}`;
-          },
-          adapter: s3Adapter({
-            bucket: process.env.S3_BUCKET || "",
-            config: {
-              endpoint: process.env.S3_ENDPOINT || undefined,
-              credentials: {
-                accessKeyId: process.env.S3_ACCESS_KEY || "",
-                secretAccessKey: process.env.S3_SECRET_KEY || "",
-              },
-              region: process.env.S3_REGION || "",
-            },
-          }),
-        },
-      },
-    }),
-  ],
+  plugins: [addSlugField, addUrlField],
 });
