@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import type { Payload } from "payload";
 
-const collections = ["media", "pages"];
+const collections = ["pages"];
 
 export const seed = async (payload: Payload): Promise<void> => {
   payload.logger.info("Seeding database...");
@@ -26,7 +26,7 @@ export const seed = async (payload: Payload): Promise<void> => {
     ),
   ]);
 
-  payload.logger.info(`— Seeding media...`);
+  payload.logger.info(`— Seeding pages...`);
 
   // create page1 & page2
   const [page1, page2] = await Promise.all([
@@ -114,7 +114,6 @@ export const seed = async (payload: Payload): Promise<void> => {
                       value: page2.id,
                       relationTo: "pages",
                     },
-                    newTab: false,
                     linkType: "internal",
                   },
                   children: [
@@ -187,7 +186,6 @@ export const seed = async (payload: Payload): Promise<void> => {
                       value: page1.id,
                       relationTo: "pages",
                     },
-                    newTab: false,
                     linkType: "internal",
                   },
                   children: [
