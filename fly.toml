@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for mvce-link-feature-morning-dust-5999 on 2024-04-08T11:14:10+02:00
+# fly.toml app configuration file generated for mvce-link-feature on 2024-04-08T16:17:43+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'mvce-link-feature-morning-dust-5999'
+app = 'mvce-link-feature'
 primary_region = 'ams'
 kill_signal = 'SIGINT'
 kill_timeout = '5s'
@@ -22,8 +22,8 @@ kill_timeout = '5s'
 [[services]]
   protocol = 'tcp'
   internal_port = 8080
-  auto_stop_machines = true
-  auto_start_machines = true
+  auto_stop_machines = false
+  auto_start_machines = false
   min_machines_running = 1
   processes = ['app']
 
