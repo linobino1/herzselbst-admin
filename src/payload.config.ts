@@ -13,6 +13,9 @@ export default buildConfig({
     },
     {
       slug: "pages",
+      access: {
+        read: () => true,
+      },
       fields: [
         {
           name: "title",
