@@ -2,7 +2,6 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { viteBundler } from "@payloadcms/bundler-vite";
 import { buildConfig } from "payload/config";
 import path from "path";
-import Users from "./collections/Users";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 
 export default buildConfig({
@@ -35,7 +34,7 @@ export default buildConfig({
   ],
   editor: lexicalEditor(),
   admin: {
-    user: Users.slug,
+    user: "users",
     bundler: viteBundler(),
     vite: (incomingViteConfig) => ({
       ...incomingViteConfig,

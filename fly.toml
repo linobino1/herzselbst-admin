@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for herzselbst-admin-2 on 2024-04-03T11:26:10+02:00
+# fly.toml app configuration file generated for mvce-link-feature-morning-dust-5999 on 2024-04-08T11:14:10+02:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'herzselbst-admin-2'
+app = 'mvce-link-feature-morning-dust-5999'
 primary_region = 'ams'
 kill_signal = 'SIGINT'
 kill_timeout = '5s'

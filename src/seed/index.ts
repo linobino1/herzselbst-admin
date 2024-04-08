@@ -20,7 +20,7 @@ export const seed = async (payload: Payload): Promise<void> => {
   await Promise.all([
     ...collections.map(async (collection) =>
       payload.delete({
-        collection: collection as "media",
+        collection: collection as "pages",
         where: {},
       })
     ),
