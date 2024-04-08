@@ -78,57 +78,80 @@ export const seed = async (payload: Payload): Promise<void> => {
           direction: "ltr",
           children: [
             {
-              type: "paragraph",
+              type: "heading",
+              tag: "h1",
+              direction: "ltr",
               format: "",
               indent: 0,
               version: 1,
-              direction: "ltr",
               children: [
                 {
-                  type: "heading",
-                  tag: "h1",
-                  direction: "ltr",
-                  format: "",
-                  indent: 0,
+                  detail: 0,
+                  format: 0,
+                  mode: "normal",
+                  style: "",
+                  text: "Page1",
+                  type: "text",
                   version: 1,
-                  children: [
-                    {
-                      detail: 0,
-                      format: 0,
-                      mode: "normal",
-                      style: "",
-                      text: "Page1",
-                      type: "text",
-                      version: 1,
-                    },
-                  ],
-                },
-                {
-                  direction: "ltr",
-                  format: "",
-                  indent: 0,
-                  type: "link",
-                  version: 2,
-                  fields: {
-                    doc: {
-                      value: page2.id,
-                      relationTo: "pages",
-                    },
-                    linkType: "internal",
-                  },
-                  children: [
-                    {
-                      detail: 0,
-                      format: 0,
-                      mode: "normal",
-                      style: "",
-                      text: "link to page2",
-                      type: "text",
-                      version: 1,
-                    },
-                  ],
                 },
               ],
+            },
+            {
+              type: "block",
+              format: "",
+              version: 2,
+              fields: {
+                blockType: "columns",
+                blockName: "",
+                columns: [
+                  {
+                    content: {
+                      root: {
+                        type: "root",
+                        format: "",
+                        indent: 0,
+                        version: 1,
+                        children: [
+                          {
+                            type: "paragraph",
+                            direction: "ltr",
+                            format: "",
+                            indent: 0,
+                            version: 1,
+                            children: [
+                              {
+                                type: "link",
+                                direction: "ltr",
+                                format: "",
+                                indent: 0,
+                                version: 2,
+                                fields: {
+                                  doc: {
+                                    value: page2.id,
+                                    relationTo: "pages",
+                                  },
+                                  linkType: "internal",
+                                },
+                                children: [
+                                  {
+                                    detail: 0,
+                                    format: 0,
+                                    mode: "normal",
+                                    style: "",
+                                    text: "link inside a column to page2",
+                                    type: "text",
+                                    version: 1,
+                                  },
+                                ],
+                              },
+                            ],
+                          },
+                        ],
+                      },
+                    },
+                  },
+                ],
+              },
             },
           ],
         },

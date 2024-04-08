@@ -2,7 +2,7 @@ import { mongooseAdapter } from "@payloadcms/db-mongodb";
 import { viteBundler } from "@payloadcms/bundler-vite";
 import { buildConfig } from "payload/config";
 import path from "path";
-import { lexicalEditor } from "@payloadcms/richtext-lexical";
+import { BlocksFeature, lexicalEditor } from "@payloadcms/richtext-lexical";
 
 export default buildConfig({
   collections: [
@@ -35,7 +35,38 @@ export default buildConfig({
       ],
     },
   ],
-  editor: lexicalEditor(),
+  editor: lexicalEditor({
+    features: ({ defaultFeatures }) => [
+      ...defaultFeatures,
+      BlocksFeature({
+        blocks: [
+          {
+            slug: "columns",
+            fields: [
+              {
+                name: "columns",
+                type: "array",
+                fields: [
+                  {
+                    name: "content",
+                    type: "richText",
+                    editor: lexicalEditor({
+                      features: ({ defaultFeatures }) => [
+                        ...defaultFeatures,
+                        BlocksFeature({
+                          blocks: [],
+                        }),
+                      ],
+                    }),
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      }),
+    ],
+  }),
   admin: {
     user: "users",
     bundler: viteBundler(),
