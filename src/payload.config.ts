@@ -9,12 +9,9 @@ import addSlugField from "./plugins/addSlugField";
 import addUrlField from "./plugins/addUrlField";
 import {
   BlocksFeature,
-  HTMLConverterFeature,
   LinkFeature,
   lexicalEditor,
 } from "@payloadcms/richtext-lexical";
-import { HTMLConverterWithAlign } from "./lexical/HTMLConverterWithAlign";
-import { UploadHTMLConverter } from "./lexical/UploadHTMLCOnverter";
 import Video from "./blocks/Video";
 import Publications from "./blocks/Publications";
 import Foldable from "./blocks/Foldable";
@@ -60,15 +57,6 @@ export default buildConfig({
           Video,
           Newsletter,
         ],
-      }),
-      HTMLConverterFeature({
-        converters: ({ defaultConverters }) => {
-          return [
-            HTMLConverterWithAlign,
-            UploadHTMLConverter,
-            ...defaultConverters,
-          ];
-        },
       }),
     ],
   }),
