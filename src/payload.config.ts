@@ -67,6 +67,23 @@ export default buildConfig({
       }),
     ],
   }),
+  endpoints: [
+    {
+      path: "/get-page",
+      method: "get",
+      root: true,
+      handler: async ({ payload }, res) => {
+        const data = await payload.find({
+          collection: "pages",
+          limit: 2,
+        });
+        const index = Math.floor(Math.random() * 2);
+        const page = data.docs[index];
+
+        return res.status(200).json(page);
+      },
+    },
+  ],
   admin: {
     user: "users",
     bundler: viteBundler(),
